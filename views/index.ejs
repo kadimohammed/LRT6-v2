@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link
+      rel="shortcut icon"
+      href="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/logo-dark.webp"
+      type="image/x-icon"
+    />
+    <style>
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        box-shadow: 0 0 0 3px #fff inset;
+        border-radius: 50%;
+        position: relative;
+        animation: l6 1.5s linear infinite;
+      }
+      .loader:before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        box-shadow: inherit;
+        width: 25px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+      }
+      @keyframes l6 {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="load-container" id="top">
+        <h1>For the optimal experience, please use headphones.</h1>
+      <div class="loader"></div>
+      <audio id="preloadAudio">
+        <source src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/start.mp3" type="audio/mp3" id="audio-player">
+      </audio>
+      
+      <a class="control-btn" onclick="hideloader()">Understood</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-nav">
+        <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/logo.webp" alt="moon" />
+      </div>
+      <div class="hero-moon">
+        <img
+          src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon quakes.webp"
+          alt="moon"
+        />
+      </div>
+      <!-- ! -->
+      <div class="hero-button">
+        <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0007_skip-btn-.webp" alt="Skip" onclick="window.location.href = './Model';">
+        <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0005_proceed-btn--copy.webp" alt="Proceed" onclick="window.location.href = './#s1';playaudio('1');">
+      </div>
+      <div class="stars"></div>
+    </section>
+
+    <section class="story" id="s1">
+      <div>
+        <div id="puce">
+          <img
+            src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0000_star.webp"
+            alt="star"
+            height="60px"
+            width="60px" loading="lazy"
+          />
+          <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0002_lines-copy.webp" alt="line"  loading="lazy"/>
+        </div>
+        <div id="container-title-story">
+          <div id="title-story">
+            <div>
+              <img
+                src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0001_line-horizontal.webp"
+                alt="sep" loading="lazy"
+              />
+            </div>
+            <h1>The Enigma of the Moon</h1>
+          </div>
+          <p id="typewriter-text">The Moon has always fascinated humanity, weaving a tapestry of awe, myth, and exploration across cultures and time. Its phases mark time in ancient calendars and inspire stories of moon goddesses. It influences tides and celestial balances, driving scientific curiosity. The Moon's beauty inspires poets and beckons us to explore the cosmos. From myth to science, it has been a celestial wonder throughout history.</p>
+        </div>
+        <div id="d-right">
+          <img
+            src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0006_astronaut.webp"
+            class="wiggle"
+            alt="astronaut"
+          />
+        </div>
+      </div>
+      
+      <a href="#s2" class="control-btn" id="reverse-btn" onclick="playaudio('2');">Next</a>
+    </section>
+
+    <section class="story" id="s2">
+      <div>
+        <div></div>
+        <div>
+          <h1>WHY THE MOON?</h1>
+          <p>The Moon, our closest celestial neighbor, provides an unparalleled
+            opportunity to explore a wealth of accumulated astronomical
+            and geological data. Its proximity and the extensive studies
+            conducted over decades make it a rich, accessible data source
+            for researchers and developers alike. Engaging with lunar data
+            not only propels our understanding of its unique characteristics
+            and potential resources but also lays a foundational framework
+            for broader celestial exploration, ensuring our endeavors in space
+            are always grounded in robust scientific data and exploration. At
+            <a href="./Team" id="link">LRT6</a>, we harness this rich vein of lunar
+            data, propelling our research and development activities into the
+            cosmos.</p>
+            <table>
+              <tr>
+                <td>Diameter</td>
+                <td>3,474 Km</td>
+              </tr>
+              <tr>
+                <td>Day Length</td>
+                <td>27,3 Earth days</td>
+              </tr>
+              <tr>
+                <td>Force of gravity</td>
+                <td>16.5% of Earth</td>
+              </tr>
+              <tr>
+                <td>Avg Distance from Earth</td>
+                <td>384,400 km</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>4.5 billion years</td>
+              </tr>
+            </table>
+        </div>
+      </div>
+      
+      <a href="#s3" class="control-btn" onclick="playaudio('3');">Next</a>
+    </section>
+    
+    <section class="story" id="s3">
+      <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0020_APOLLO-11.webp" alt="explore" loading="lazy">
+      <div id="s3-core">
+        <div>
+          <p><span>Apollo 11</span> &nbsp; was a historic achievement, marking humanity's first
+            steps on another celestial body and showcasing the capability
+            for humans to explore beyond our planet. The mission returned
+            valuable scientific data and samples from the Moon and paved
+            the way for future space exploration.</p>
+            <table>
+              <tr>
+                <td>Launch Date</td>
+                <td>July 16, 1969</td>
+              </tr>
+              <tr>
+                <td>Crew</td>
+                <td>Neil Armtrong <br> <small>(Commander)</small> </td>
+              </tr>
+              <tr>
+                <td id="no-bg"></td>
+                <td>Buzz ALdrin <br>  <small>(Lunar Module Pilot)</small></td>
+              </tr>
+              <tr>
+                <td id="no-bg"></td>
+                <td>Michael Collins <br>  <small>(Command Module Pilot)</small></td>
+              </tr>
+            </table>
+        </div>
+        <div></div>
+      </div>
+      <div id="list">
+        <br>
+        <h1>Key Events</h1>
+        <br>
+        <ul>
+          <li>Armstrong and Aldrin landed the lunar module, "Eagle." on the Moon on July 20,1969, while Collins orbited above in the command module.
+          </li>
+          <li>Armstrong famously declared. "That's one small step for a man, one giant leap for mankind," as he became the first human to step onto the Moon.</li>
+          <li>The astronauts spent approximately 21 hours on the Moon, conducting experiments and collecting samples.</li>
+          <li>Armstrong and Aldrin rejoined Collins in lunar orbit and returned to Earth, splashing down safely in the Pacific Ocean on July 24, 1969.</li>
+        </ul>
+      </div>
+      <a href="#s4" class="control-btn" onclick="playaudio('4');">Next</a>
+    </section>
+    
+    <section class="story" id="s4">
+      <video autoplay loop muted plays-inline id="back-video">
+        <source src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon landing~1.mp4" type="video/mp4">
+      </video>
+      <div>
+        <a href="#s5" class="control-btn control-btn-video" id="reverse-btn" onclick="playaudio('5');">Next</a>
+      </div>
+    </section>
+
+    <section class="story"  id="s5">
+      <div>
+        <h1>Do you think there are <br/> quakes on the Moon ?</h1>
+        <div>
+          <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0003_YES.webp" alt="explore" onclick="window.location.href = './#s6';playaudio('6 yes');" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0004_NO.webp" alt="explore" onclick="window.location.href = './#s6';playaudio('6 no');" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="s6">
+      <div class="stars-end"></div>
+      <img src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0000_EXPLORE.webp" alt="explore" onclick="window.location.href = './Model';">
+    </section>
+    
+    <script>
+
+      const audio = document.getElementById("preloadAudio");
+      const player = (audio).querySelector('#audio-player');
+      function playaudio(name){
+        audio.pause();
+        player.src="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/section "+name+".mp3";
+        audio.load();
+        audio.play();
+      }
+
+
+      // Function to start the typewriter effect
+      function startTypewriterEffect() {
+        const text = document.getElementById("typewriter-text").innerText;
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        document.getElementById("typewriter-text").innerText = "";
+        document.getElementById("typewriter-text").appendChild(cursor);
+
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            const char = text.charAt(i);
+            const delay = char === "\n" ? 1000 : 20; // Adjust delay for line breaks
+            cursor.style.display = "inline";
+            cursor.insertAdjacentHTML("beforebegin", char);
+            i++;
+            setTimeout(function () {
+              typeWriter();
+            }, delay);
+          } else {
+            cursor.style.display = "none"; // Hide the cursor when typing is complete
+          }
+        }
+        
+        typeWriter();
+      }
+
+      // Intersection Observer to start the animation when the paragraph is in the viewport
+      const paragraph = document.getElementById("typewriter-text");
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startTypewriterEffect(); // Start animation when in viewport
+            observer.unobserve(entry.target); // Stop observing once animation starts
+          }
+        });
+      });
+
+      // Start observing the paragraph
+      observer.observe(paragraph);
+      
+
+      function hideloader() {
+        
+        const element = document.querySelector(".load-container");
+        
+        element.style.transition = 'opacity 0.5s ease';
+        element.style.opacity = '0';
+        setTimeout(_=>{
+          element.style.display = 'none';
+        }, 500);
+        //play audio
+        audio.play();
+      }
+    </script>
+  </body>
+</html>

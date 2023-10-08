@@ -1,0 +1,461 @@
+@font-face {
+    font-family: 'Electrolize';
+    src: url('/fonts/ELECTROLIZE-REGULAR.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Electrolize', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: black;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.load-container{
+    color: #fff;
+    background: black;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.hero{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.hero, #s6{
+    background-image: url("https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0016_bg.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-nav{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding:20px;
+    top: 0;
+}
+.hero-nav > img{
+    height: 2.5rem;
+    aspect-ratio: 1/1;
+}
+.hero-moon{
+    height: 70%;
+}
+
+.hero-button{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2rem;
+}
+.hero-moon > img{
+    height: 90vh;
+    object-fit: cover;
+}
+
+.control-btn {
+    text-decoration: none;
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+    opacity: 0.8;
+    text-align: center;
+    font-size: 2rem;
+    padding: 10px;
+    transition: .2s ease-in-out;
+    z-index: 2;
+    clip-path: polygon(
+  0 0,       /* top-left corner */
+  calc(100% - .5em) 0, /* top-right corner */
+  100% .5em,    /* top-right curve start */
+  100% 100%,    /* bottom-right corner */
+  .5em 100%,     /* bottom-right curve end */
+  0% calc(100% - .5em) /* bottom-left corner */
+);
+}
+
+.control-btn:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+.control-btn-video{
+    opacity: 0.4 !important;
+}
+
+.control-btn-video:hover {
+    opacity: 1 !important;
+}
+
+#reverse-btn{
+    color: #fff;
+    background-color: #000;
+}
+
+.story{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#s1{
+    background-image: url('https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-export_0015_moon-(merged).webp');
+    overflow: visible;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 726px;
+    background-position-x: right;
+    background-position-y: center;
+}
+
+#s1 > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#s1 p {
+    font-size: 1.5rem;
+    line-height: 2.5ch;
+}
+
+#s2{
+    background-color: #000;
+    color: #fff;
+    display: flex;
+}
+
+#s1, #s2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#puce{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 0 0 20px;
+}
+
+#s2 > div {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#s2 div div{
+    height: 100%;
+    width: 100%;
+}
+#s2 > div > div > h1{
+    font-size: 3.1em;
+}
+#s2 div div:first-child {
+    background-image: url("https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0033_moon-copy.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 40px 40px 0 40px;
+}
+
+#s2 > div > div > table > tbody > tr > td, #s3 > div > div > table > tbody > tr > td {
+    background-image: url(https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/underline.webp);
+    background-repeat: no-repeat;
+    background-position-x: 0%;
+    background-position-y: center;
+    padding-left: 17px;
+    height: 40px;
+}
+
+#s2 div div:last-child {
+    padding: 40px 40px 0 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+#container-title-story{
+    padding-top: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+}
+#container-title-story > p{
+    font-weight: 500;
+    padding-left: 45px;
+}
+#title-story{
+    display: flex;
+    font-size: 2rem;
+}
+
+.typewriter-text {
+    overflow: hidden;
+    white-space: wrap;
+}
+.cursor {
+    border-right: .15em solid #777;
+    display: none;
+    animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+#d-right{
+    position: relative;
+    width: 30%;
+    flex-grow: 1;
+}
+
+#d-right > img:first-child {
+    position: absolute;
+    height: 821px;
+    right: 0px;
+    top: -513px;
+
+}
+
+.wiggle {
+    transition: transform 0.3s ease-in-out;
+    animation: wiggle-animation 10s ease-in-out infinite;
+}
+
+@keyframes wiggle-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+table{
+    width: 100%;
+    font-weight: bolder;
+}
+
+tr {
+    display: inline-table;
+    width: 100%;
+    padding: 10px 0;
+}
+
+tr > td:first-child {
+    width: 70%;
+}
+
+tr > td:last-child {
+    width: 30%;
+}
+
+
+#s3{
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 10px;
+}
+
+#s3-core{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+}
+
+#s3-core > div:first-child{
+    padding: 0 40px 0 80px;
+}
+
+#s3-core div{
+    width: 50%;
+    height: 100%;
+}
+#s3-core > div > p > span{
+    font-size: x-large;
+}
+#s3 > img{
+    object-fit: none;
+    margin: 10px 0;
+    height: 80px;
+}
+#list{
+    width: 85%;
+}
+
+#list > ul{
+    padding-left: 60px;
+}
+
+#s3 div:last-child{
+    background-image: url("https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0007_apollo-11-ship-croped.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+#s4{
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+#s4 div {
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+#back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio:16/9){
+    #back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio:16/9){
+    #back-video{
+        width: auto;
+        height: 100%;
+    }
+}
+
+
+#s5{
+    background-image: url('https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/moon-website-final-export_0006_astronaut-pic.webp');
+    background-size: cover;
+    background-position-y: center;
+    color: #fff;
+}
+
+#s5 > div{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    gap: 30px;
+}
+
+#s5 > div > h1{
+    font-size: 3rem;
+    font-weight: lighter;
+}
+
+#s5 > div > div {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bolder;
+}
+
+#s5 > div > div > img{
+    width: 40%;
+    object-fit: cover;
+    transition: .3s ease;
+}
+
+#s5 > div > div > img:hover{
+    scale: 1.05;
+    cursor: pointer
+}
+
+#s6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#s6 img{
+    width: 60%;
+    object-fit: cover;
+    transition: .3s ease;
+}
+
+#s6 img:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.hero-button > img{
+    width: 11%;
+    object-fit: cover;
+    transition: .3s ease;
+    z-index: 1;
+}
+
+.hero-button > img:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+#no-bg{
+    background-image: none !important;
+}
+
+#link{
+    color: aquamarine;
+    font-weight: 900;
+}

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title><%= title %></title>
+    <link
+    rel="shortcut icon"
+    href="https://cdn.jsdelivr.net/gh/vrspi/CDN@1.0.6/public/logo-dark.webp"
+    type="image/x-icon"/>
+    <style>
+
+        @font-face {
+            font-family: 'Electrolize';
+            src: url('/fonts/ELECTROLIZE-REGULAR.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Electrolize';
+        }
+
+        body { margin: 0; }
+        canvas { width: 100%; height: 100% ; vertical-align:bottom}
+
+
+        .text{
+            font-size: 13px;
+            padding-left: 20px;
+            font-weight: 800;
+            color: rgb(255, 255, 255);
+            margin-bottom: 10px;
+        }
+      
+        .icon-1 {
+  cursor: pointer;
+}
+        .outer {
+            width: 30%;
+            height: 70vh;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            padding: 100px;
+            background-image: url("images/infobox.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            background-color: black;
+
+        }
+        .sharp-corner {
+            width: 100%;
+            height: 50%;
+            border:2px solid white;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            
+        }
+
+
+
+
+        .outer1 {
+            width: 30%;
+            height: 70vh;
+            position: absolute;
+            left: 15px;
+            top: 150px;
+            padding: 100px;
+            background-image: url("images/infobox.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+
+
+        .controllers{
+            height: 90px;
+            width: 70%;
+            gap: 20px;
+            padding:5px;
+            position: absolute;
+            margin-top:20px;
+            margin-left:5px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .controllerss{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap:18px;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;  
+            background: url('design/slider.png');
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;  
+            height: 20px; 
+            background: url('design/sliderpoint.png');
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 50px;  
+            height: 50px;  
+            background: url('design/slider.png');
+            cursor: pointer;
+        }
+
+
+
+        .imgbutton:hover{
+            filter: 
+            drop-shadow(0 0 10px rgba(255, 255, 255, 1)) 
+            drop-shadow(0 0 12px rgba(255, 255, 255, 1));
+            transition: filter 0.3s ease;
+            cursor: pointer;
+
+
+        }
+
+
+        #BackToHome{
+            position: absolute;
+            top: 660px;
+            left: 20px;
+            width: 200px;
+            height: 40px;
+            color: white;
+            background-color: black;
+            border: 2px solid white;
+            font-weight: 900;
+            border-radius: 15px 0px 15px 0px;
+
+        }
+        #BackToHome:hover{
+            color: black;
+            background-color:white;
+            border: 2px solid black;
+        }
+
+        .select{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            clip-path: polygon(50% 0%, 90% 0, 100% 30%, 100% 75%, 100% 100%, 10% 99%, 0 70%, 0 0, 25% 0);
+        }
+
+        .selectouter
+        {
+            position: relative;
+            width: 100px;
+            height: 30px;
+            padding: 2px;
+            background: white;
+            clip-path: polygon(50% 0%, 90% 0, 100% 30%, 100% 75%, 100% 100%, 10% 99%, 0 70%, 0 0, 25% 0);
+        }
+
+
+        .information1{
+            padding:5px;
+        }
+
+
+
+        
+    </style>
+</head>
+<body id="bod" style="margin: 0;">
+
+    <div class="controllers">
+        <div class="controllerss">
+            <p class="text">Latitude & Longitude</p>
+            <p class="text">Moonquakes</p>
+        </div>
+        <div class="controllerss">
+            <img class="imgbutton" id="lat_log" src="/design/off.png" alt="">
+            <img class="imgbutton" id="moon_quakes" src="/design/off.png" alt="">
+        </div>
+        <div class="controllerss">
+            <p class="text">Apollo Landers</p>
+           
+        </div>
+        <div class="controllerss">
+            <img class="imgbutton" id="appolo" src="/design/off.png" alt="">
+            
+        </div>
+
+        <div class="controllerss">
+            <div class="selectouter">
+                <select id="year" class="select" >
+                </select>
+            </div>
+            
+            
+            <div class="selectouter">
+                <select id="day"  class="select"></select>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+                
+        </div>
+        <div class="controllerss">
+            <p class="text" style="margin-bottom: 20px;">Directional Light <span style="margin-left: 20px;" id="Directional_Light">40</span></p> 
+            <p></p>
+        </div>
+        <div class="controllerss">
+            <input type="range" min="-400" max="400" value="40" class="slider" id="volume-control">
+            <button style="background: white;color: black;width: 70px;height: 30px;margin-top: 10px;" id="reset_volume_control" class="button_off">reset</button>
+        </div>
+        <div class="controllerss">
+            <img class="imgbutton" id="retate_button" src="/design/play.png" alt="">
+            <img class="imgbutton" id="retate_button_pause" src="/design/pause.png" alt="">
+        </div>
+    </div>
+
+ 
+
+    <div  id="information" style="display: none;" class="outer">
+        <div id="station_img" class="sharp-corner" >
+        </div>
+        <p id="station_text" style="color: white;margin-top: 30px;font-size: 12px;"></p>
+    </div>
+
+
+
+
+    <div  id="information1" style="display: none;"  class="outer1">
+        <The id="station_text" style="color: white;">The insights provided are based on exploratory analyses of datasets such as <b style="color: brown;">nakamura_1979_sm_locations.csv</b> and others, and should be considered preliminary. The findings are subject to the accuracy and completeness of the utilized data and methodologies. Further validation with additional data and methodologies is crucial for affirming these initial insights, and no guarantee of absolute accuracy can be ensured due to the complex nature of seismic data.</p>
+    </div>
+    
+    
+
+    <div class="button_div">
+        <button id="BackToHome" class="button1">Back To Home</button>
+    </div> 
+
+
+    <img style="position: absolute;top:600px;right:10px" src="/design/xyz.png" alt="">
+
+
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
+        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+        import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/OBJLoader.js';
+
+;
+
+    var textureURL = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/17271/lroc_color_poles_1k.jpg"; 
+    var displacementURL = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/17271/ldem_3_8bit.jpg"; 
+    var worldURL = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/17271/hipp8_s.jpg"
+    var normalTexture = "images/moonnormal.bmp";
+    var overlayTexture = 'path/to/overlay.gif'; 
+
+
+    var lat = -3.6445; 
+    var lon = -17.47753; 
+    var u = (lon + 180) / 360;
+    var v = (90 - lat) / 180;
+    var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+        var renderer = new THREE.WebGLRenderer();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Controls
+        var controls = new OrbitControls(camera, renderer.domElement);
+    controls.enablePan = false;
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    
+    var geometry = new THREE.SphereGeometry(2,60,60);
+    var textureLoader = new THREE.TextureLoader();
+    
+
+    textureLoader.load(textureURL, function(texture) {
+    textureLoader.load(displacementURL, function(displacement) {
+        textureLoader.load(worldURL, function(worldTexture) {
+            textureLoader.load(normalTexture, function(normalTexture) {
+                textureLoader.load("images/waves.gif", function(overlayTexture) {
+                var material = new THREE.MeshPhongMaterial({
+                    color: 0xffffff,
+                    map: texture,
+                    
+                    displacementScale: 0.06,
+                    bumpMap: displacement,
+                    bumpScale: 0.04,
+                    reflectivity: 0,
+                    shininess: 0
+                });
+    
+                var moon = new THREE.Mesh(geometry, material);
+                scene.add(moon);
+    
+                var worldGeometry = new THREE.SphereGeometry(1000,60,60);
+                var worldMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0xffffff,
+                    map: worldTexture,
+                    side: THREE.BackSide
+                });
+                var world = new THREE.Mesh(worldGeometry, worldMaterial);
+                scene.add(world);
+    
+                const light = new THREE.DirectionalLight(0xFFFFFF, 1);
+                light.position.set(-100, 10, 50);
+                scene.add(light);
+    
+                const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1);
+                hemiLight.color.setHSL(0.6, 1, 0.6);
+                hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+                hemiLight.position.set(0, 0, 0);
+                scene.add(hemiLight);
+
+
+                const volumeControl = document.getElementById('volume-control');
+                const Directional_Light = document.getElementById('Directional_Light');
+                
+                volumeControl.addEventListener('input', function () {
+                    const sliderValue = parseFloat(volumeControl.value);
+                    light.position.setX(-100 + sliderValue);
+                    Directional_Light.innerText = sliderValue;
+                    renderer.render(scene, camera);
+                });
+
+
+
+            
+    
+       
+                function animate() {
+                    requestAnimationFrame(animate);
+                    // moon.rotation.y += 0.002;
+                    // moon.rotation.x += 0.0001;
+                    // world.rotation.y += 0.0001;
+                    // world.rotation.x += 0.0005;
+                    controls.update();
+                    
+            
+                        var distance = camera.position.distanceTo(moon.position);
+
+        
+                    var minDistance = 4;
+                    var maxDistance = 6;  
+             
+                    if (distance < minDistance) {
+                        
+                        var direction = new THREE.Vector3();
+                        camera.getWorldPosition(direction);
+                        direction.sub(moon.position).normalize();
+                        
+                       
+                        camera.position.copy(moon.position).addScaledVector(direction, minDistance);
+                    }
+                  
+                    if (distance > maxDistance) {
+                        var direction = new THREE.Vector3();
+                        camera.getWorldPosition(direction);
+                        direction.sub(moon.position).normalize();
+                        
+                        camera.position.copy(moon.position).addScaledVector(direction, maxDistance);
+                    }
+                    renderer.render(scene, camera);
+                }
+    
+                animate();
+    
+                function onResize() {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                }
+    
+                window.addEventListener('resize', onResize, false);
+
+
+                var grid;
+
+                function createGrid(material, radius) {
+                grid = new THREE.Group();
+                
+            
+                for (var lat=-80; lat<=80; lat+=10) {
+                    var geometry = new THREE.BufferGeometry();
+                    var vertices = [];
+                    for (var lon=-180; lon<=180; lon+=5) {
+                        var radLat = THREE.MathUtils.degToRad(lat);
+                        var radLon = THREE.MathUtils.degToRad(lon);
+                        var x = radius * Math.cos(radLat) * Math.cos(radLon);
+                        var y = radius * Math.cos(radLat) * Math.sin(radLon);
+                        var z = radius * Math.sin(radLat);
+                        vertices.push(x, y, z);
+                    }
+                    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+                    var line = new THREE.Line(geometry, material);
+                    grid.add(line);
+                }
+
+            
+                for (var lon=-180; lon<=180; lon+=10) {
+                    var geometry = new THREE.BufferGeometry();
+                    var vertices = [];
+                    for (var lat=-90; lat<=90; lat+=5) {
+                        var radLat = THREE.MathUtils.degToRad(lat);
+                        var radLon = THREE.MathUtils.degToRad(lon);
+                        var x = radius * Math.cos(radLat) * Math.cos(radLon);
+                        var y = radius * Math.cos(radLat) * Math.sin(radLon);
+                        var z = radius * Math.sin(radLat);
+                        vertices.push(x, y, z);
+                    }
+                    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+                    var line = new THREE.Line(geometry, material);
+                    grid.add(line);
+                }
+                
+                return grid;
+            }
+
+            
+
+            
+
+
+
+            function latLongToCartesian(lat, lon, radius) 
+            {
+              
+                var latRad = THREE.MathUtils.degToRad(lat);
+                var lonRad = THREE.MathUtils.degToRad(lon);
+                
+              
+                var x = radius * Math.cos(latRad) * Math.cos(lonRad);
+                var y = radius * Math.cos(latRad) * Math.sin(lonRad);
+                var z = radius * Math.sin(latRad);
+                
+                return new THREE.Vector3(x, y, z);
+            }
+            var ss;
+            function AddS(lat3,long3) {
+
+                var loaderObj = new OBJLoader();
+                var spaceship;
+
+                loaderObj.load('3DModels/Appolo.obj', function (obj) {
+                spaceship = obj;
+                spaceship.scale.set(0.002, 0.002, 0.002);  
+                
+            
+               
+                var radius = 2.09;  
+                
+                var position = latLongToCartesian(lat3, long3, radius);
+                spaceship.position.set(position.x, position.y, position.z);  
+                
+               
+                var normalVector = position.clone().normalize();
+                var upVector = new THREE.Vector3(0, 1, 0); 
+
+                var rotationAxis = new THREE.Vector3();
+                rotationAxis.crossVectors(upVector, normalVector).normalize();
+                var rotationAngle = Math.acos(upVector.dot(normalVector));
+
+               
+                spaceship.rotateOnWorldAxis(rotationAxis, rotationAngle);
+
+                scene.add(spaceship);
+                
+                    
+
+            });
+         
+
+            }
+            
+            
+
+
+            let rotationEnabled = false;
+
+            function toggleRotation() {
+                rotationEnabled = true;
+                vider_addquakes();
+                if(iconSprite != null)
+                scene.remove(iconSprite);
+                supprimerStations();
+                document.getElementById("appolo").src="design/off.png";
+                document.getElementById("information").style.display="none";
+                document.getElementById("information1").style.display="none";
+                animateMoonRotation();
+            }
+
+            function toggleRotationpause() {
+                rotationEnabled = false;
+            }
+
+            const startRotationButton = document.getElementById('retate_button');
+            startRotationButton.addEventListener('click', toggleRotation);
+
+            const pauseRotationButton = document.getElementById('retate_button_pause');
+            pauseRotationButton.addEventListener('click', toggleRotationpause);
+
+            var speed = 0;
+            function animateMoonRotation() {
+                speed = 0.001;
+                
+                function animate() {
+                    if (!rotationEnabled) {
+                        return; 
+                    }
+                    
+                    moon.rotation.y += speed; 
+                    
+
+                    stations.forEach(function (station) {
+                        station.rotation.y += speed;
+                    });
+                    
+                    renderer.render(scene, camera); 
+                    
+                    requestAnimationFrame(animate);
+                }
+
+                animate(); 
+            }
+
+
+
+
+
+            const reset_volume_control = document.getElementById('reset_volume_control');
+            reset_volume_control.addEventListener('click', reset_volume_controle);
+
+            function reset_volume_controle(){             
+                    const sliderValue = parseFloat(50);
+                    light.position.setX(-100 + sliderValue);
+                    Directional_Light.innerText = sliderValue;
+                    renderer.render(scene, camera);
+                    volumeControl.value=50;
+            }
+
+
+            
+
+
+
+                
+            
+            function latLongToCartesian(lat, lon, radius) {
+                
+                const latRad = THREE.MathUtils.degToRad(lat);
+                const lonRad = THREE.MathUtils.degToRad(lon);
+
+                
+                const x = radius * Math.cos(latRad) * Math.cos(lonRad);
+                const y = radius * Math.cos(latRad) * Math.sin(lonRad);
+                const z = radius * Math.sin(latRad);
+
+                return new THREE.Vector3(x, y, z);
+            }
+
+            
+            function createIconSprite(latitude, longitude) {
+                const loader = new THREE.TextureLoader();
+                const iconTexture = loader.load('/images/pointeur-de-localisation1.png');
+                const iconMaterial = new THREE.SpriteMaterial({ map: iconTexture });
+                const iconSprite = new THREE.Sprite(iconMaterial);
+                iconSprite.scale.set(0.1, 0.1, 1);
+
+               
+                const cartesianCoords = latLongToCartesian(latitude, longitude, 2.1);
+
+                
+                iconSprite.position.set(cartesianCoords.x, cartesianCoords.y, cartesianCoords.z);
+
+                return iconSprite;
+            }
+
+
+
+
+            
+
+            var iconSprite;
+
+            
+            function processCSVData(data) {
+                var yearin =  document.getElementById("year");
+                var dayin =  document.getElementById("day");
+                const parsedData = parseCSV(data);
+
+ 
+                
+                for (let i = 1; i < parsedData.length; i++) { 
+                    const record = parsedData[i];
+                    const lat = parseFloat(record[5]); 
+                    const lon = parseFloat(record[6]); 
+                    const year = parseFloat(record[0]);
+                    const day = parseFloat(record[1]);
+
+                    if(yearin.value==year && dayin.value==day)
+                    {
+                      
+                        iconSprite = createIconSprite(lat, lon);
+                        scene.add(iconSprite);
+                    }
+                    
+                    
+                }
+            }
+
+
+            function parseCSV(data) {
+                const rows = data.split('\n');
+                return rows.map(row => row.split(','));
+            }
+
+       
+            
+
+
+
+            const selectOptionsday = document.getElementById('day');
+            
+
+            selectOptionsday.addEventListener('change', function () {
+                speed = 0;
+                vider_addquakes();
+                if(iconSprite!=null) 
+                {
+                    scene.remove(iconSprite);
+                }
+                
+                fetch('csv/nakamura_1979_sm_locations.csv')
+                .then(response => response.text())
+                .then(data => {
+                    processCSVData(data);
+                })
+                .catch(error => console.error('Error fetching the CSV file:', error));
+            });
+
+
+
+    
+
+            const selectOptionsYear = document.getElementById('year');
+            selectOptionsYear.innerHTML = '';
+
+            const yearSet = new Set(); 
+            const csvFilePath = 'csv/nakamura_1979_sm_locations.csv';
+
+            fetch(csvFilePath)
+                .then(response => response.text())
+                .then(data => {
+                    const rows = data.split('\n');
+                    for (let i = 1; i < rows.length; i++) { 
+                        const cols = rows[i].split(',');
+                        const year = cols[0];
+                        yearSet.add(year);
+                    }
+                    
+                    yearSet.forEach(year => {
+                        const option = document.createElement('option');
+                        option.value = year;
+                        option.textContent = year;
+                        selectOptionsYear.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Erreur lors du chargement du fichier CSV :', error));
+
+
+
+
+
+
+
+
+
+        
+        selectOptionsYear.addEventListener('change', function () {
+            const selectedYear = selectOptionsYear.value;
+            selectOptionsday.innerHTML = '<option></option>'; 
+            fetch('csv/nakamura_1979_sm_locations.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const rows = data.split('\n');
+                    for (let i = 1; i < rows.length; i++) { 
+                        const cols = rows[i].split(',');
+                        const year = cols[0];
+                        const day = cols[1];
+                        if (year === selectedYear) {
+                            const option = document.createElement('option');
+                            option.value = day;
+                            option.textContent = day;
+                            selectOptionsday.appendChild(option);
+                        }
+                    }
+                })
+                .catch(error => console.error('Erreur lors du chargement du fichier CSV :', error));
+        });
+
+            
+
+
+
+
+
+
+
+            const lat_log = document.getElementById('lat_log');
+            lat_log.addEventListener('click', lat_log_change);
+            var gridMaterial = new THREE.LineBasicMaterial({color: 0xffffff, transparent: true, opacity: 0.5}); // White color
+
+            function lat_log_change()
+            {   
+                if(grid == null)
+                {
+                    
+                    grid = createGrid(gridMaterial, 2.1);     
+                    grid.rotation.x = Math.PI / 2;
+                    scene.add(grid);
+                    lat_log.src="design/on.png";
+                    
+                }
+                else
+                {
+                    lat_log.src="design/off.png";
+                    scene.remove(grid);
+                    grid=null;
+                }
+                
+
+            }
+
+
+            const BackToHome = document.getElementById('BackToHome');
+            BackToHome.addEventListener('click', Back_To_Page_Home);
+
+            function Back_To_Page_Home()
+            {   
+                window.location.href = "/";
+            }
+
+            var stations = [];
+
+            var station_img = document.getElementById("station_img");
+            var station_text = document.getElementById("station_text");
+
+            function addStation(latitude, longitude, stationtext,stationimg) {
+                
+                var iconGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+                var iconMaterial = new THREE.MeshBasicMaterial({
+                    color: 0x0000ff,  
+                    transparent: true,
+                    opacity: 1
+                    
+                });
+                var icon = new THREE.Mesh(iconGeometry, iconMaterial);
+                
+                icon.name = "icon-1"; 
+                var position = latLongToCartesian(latitude, longitude, 2);
+                var spaceship= AddS(latitude,longitude);
+               
+
+                icon.position.set(position.x, position.y, position.z);;
+
+                icon.userData.stationtext = stationtext;
+                icon.userData.stationimg = stationimg;
+                scene.add(icon);
+
+            
+                stations.push(icon);
+            }
+            var quakes = [];
+            function addquakes(latitude, longitude, stationtext,stationimg,A, S12, S14, S15, S16, Stations, Year, Day, Magnitude) {
+                scene.remove(iconSprite);
+                var iconGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+                var iconMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+                var icon = new THREE.Mesh(iconGeometry, iconMaterial);
+                
+                var position = latLongToCartesian(latitude, longitude, 2);
+                
+                icon.position.set(position.x, position.y, position.z);;
+
+                icon.userData.stationtext = stationtext;
+                icon.userData.stationimg = stationimg;
+                icon.userData.A = A;
+                icon.userData.S12 = S12;
+                icon.userData.S14 = S14;
+                icon.userData.S15 = S15;
+                icon.userData.S16 = S16;
+                icon.userData.Stations = Stations;
+                icon.userData.Year = Year;
+                icon.userData.Day = Day;
+                icon.userData.Magnitude = Magnitude;
+
+                scene.add(icon);
+                
+              
+                quakes.push(icon);
+            }
+            
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            renderer.domElement.addEventListener('click', onMouseClick);
+            
+
+
+
+
+            
+            function onMouseClick(event) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    var intersects = raycaster.intersectObjects(stations);
+    var intersects2 = raycaster.intersectObjects(quakes);
+    if (intersects.length > 0) {
+        var clickedObject = intersects[0].object;
+        var userData = clickedObject.userData;
+
+        if (userData.stationtext !== undefined && userData.stationimg !== undefined) {
+          
+            var stationtext = userData.stationtext;
+            var stationimg = userData.stationimg;
+            document.getElementById('information').style.display = 'block';
+            document.getElementById('station_img').style.backgroundImage = "url("+stationimg+")";
+            document.getElementById('station_text').innerText = stationtext
+            
+        } else {
+            console.log("Spaceship Clicked");
+        }
+    }
+    if (intersects2.length > 0) {
+        var clickedObject = intersects2[0].object;
+        var userData = clickedObject.userData;
+
+        if (userData.stationtext !== undefined && userData.stationimg !== undefined) {
+                var A= userData.A;
+                var S12=userData.S12;
+                var S14=userData.S14;
+                var S15=userData.S15;
+                var S16=userData.S16;
+                var Stations=userData.Stations;
+                var Year=userData.Year;
+                var Day=userData.Day
+                var Magnitude=userData.Magnitude;
+
+                
+            var text = 
+                "A = "+ A + "<br>" +
+               "S12: " + S12 + "<br>" +
+               "S14: " + S14 + "<br>" +
+               "S15: " + S15 + "<br>" +
+               "S16: " + S16 + "<br>" +
+               "Stations: " + Stations + "<br>" +
+               "Year: " + Year + "<br>" +
+               "Day: " + Day + "<br>" +
+               "Magnitude: " + Magnitude;
+
+             document.getElementById('station_text').innerHTML = text;
+             document.getElementById('station_img').style.backgroundImage = "url("+userData.stationimg+")";
+           
+           
+            
+              document.getElementById('information').style.display = 'block';
+        } else {
+            console.log("Spaceship Clicked");
+        }
+    }
+
+ 
+
+}
+
+            const information = document.getElementById("information");
+
+            
+
+
+            function supprimerStations() {
+                stations.forEach(function (station) {
+                    scene.remove(station);
+                });
+                stations = [];
+            }
+
+            var etat_station= true;
+
+            
+            const appolo = document.getElementById('appolo');
+            appolo.addEventListener('click', afficher_appolo);
+
+            function afficher_appolo()
+            {   
+                if(speed != 0 ){
+                    speed = 0;
+                    etat_station = true;
+                }
+                if(etat_station)
+                {
+
+                    var s11 = "Apollo 11, in July 1969, marked the historic first human Moon landing. The lunar module 'Eagle' brought Neil Armstrong and Buzz Aldrin to the lunar surface while Michael Collins orbited in 'Columbia.' On July 20, 1969, Neil Armstrong took the first human steps on the Moon, famously saying, 'That's one small step for [a] man, one giant leap for mankind.' This mission achieved President John F. Kennedy's goal of lunar landing and safe return.";
+
+                    var s12 = "Apollo 12 was the sixth crewed mission in NASA's Apollo program and was launched in November 1969, just four months after Apollo 11. The mission aimed to perform a precise landing on the Moon's surface in the Ocean of Storms. The lunar module 'Intrepid' successfully landed astronauts Charles 'Pete' Conrad and Alan L. Bean on the Moon. Apollo 12 is known for its dramatic recovery from a lightning strike shortly after liftoff, which temporarily knocked out the spacecraft's electrical systems. Despite this, the mission successfully conducted lunar surface activities and experiments.";
+                    var s14 = `Apollo 14 was the eighth crewed mission in the Apollo program, launched in January 1971. The mission aimed to explore the lunar highlands near the Fra Mauro crater. Astronauts Alan B. Shepard and Edgar D. Mitchell landed on the Moon's surface in the lunar module "Antares." Shepard, the commander, famously hit golf balls on the lunar surface. Apollo 14 conducted scientific experiments, collected lunar samples, and demonstrated the ability to conduct precision landings.`;
+
+                    var s15 = `Apollo 15 was the ninth crewed mission in NASA's Apollo program and was launched in July 1971. It was the first mission to use the Lunar Roving Vehicle (LRV), which allowed astronauts to explore greater distances on the Moon's surface. The lunar module "Falcon" carried astronauts David R. Scott and James B. Irwin to the Moon, while Alfred M. Worden orbited above in the command module "Endeavour." The mission conducted extensive scientific experiments, including the collection of lunar samples from the Hadley-Apennine region.`;
+
+                    var s16 = `Apollo 16 was the tenth crewed mission in NASA's Apollo program, launched in April 1972. The mission aimed to explore the Descartes Highlands region of the Moon. Astronauts John W. Young and Charles M. Duke landed on the Moon's surface in the lunar module "Orion," while Thomas K. Mattingly orbited above in the command module "Casper." Apollo 16 conducted geological experiments, collected lunar samples, and deployed scientific instruments on the lunar surface.`;
+                    
+                    
+                    addStation(0.67416, 23.473146, s11,"/images/s11.webp"); 
+                    addStation(-3.01084, -23.42456, s12,"/images/s12.webp"); 
+                    addStation(-3.6445, -17.47753,s14,"/images/s14.webp");
+                    addStation(26.13407, 3.62981, s15,"/images/s15.webp"); 
+                    addStation(-8.97577, 15.49649, s16,"/images/s16.webp"); 
+                    appolo.src="design/on.png";
+                    etat_station=false;
+                }
+                else
+                {
+                    supprimerStations();
+                    appolo.src="design/off.png";
+                    document.getElementById('information').style.display = 'none'
+                    etat_station=true;
+                }
+            }
+
+            const moon_quakes = document.getElementById('moon_quakes');
+            const information1 = document.getElementById('information1');
+            moon_quakes.addEventListener('click', afficher_moon_quakes);
+
+            var etat_moon_quakes = false;
+
+            function afficher_moon_quakes()
+            {  
+                if(speed != 0 ){
+                    speed = 0;
+                    etat_moon_quakes = false;
+                }
+                if(etat_moon_quakes)
+                {
+                    etat_moon_quakes = false;
+                    information1.style.display="none";
+                    vider_addquakes();
+                }
+                else
+                {
+                    
+                    etat_moon_quakes = true;
+                    information1.style.display="block";             
+                    moon_quakes.src="design/on.png";
+                    fetch('/csv/updated_quake_summary.csv')
+                    .then(response => response.text())
+                    .then(data => {
+                        const rows = data.split('\n');
+                        for (let i = 1; i < rows.length; i++) 
+                        { 
+                            const cols = rows[i].split(',');
+                            const A = cols[0];
+                            const Latitude = cols[1];
+                            const Longitude = cols[2];
+                            const S12 = cols[3];
+                            const S14 = cols[4];
+                            const S15= cols[5];
+                            const S16 = cols[6];
+                            const Stations = cols[7];
+                            const Year = cols[8];
+                            const Day = cols[9];
+                            const Magnitude = cols[10];
+                            addquakes(Latitude, Longitude, 'this is station 1', '/images/info.png',A, S12, S14, S15, S16, Stations, Year, Day, Magnitude);
+ 
+                        }
+                    })
+                    .catch(error => console.error('Erreur lors du chargement du fichier CSV :', error));
+                    
+                }
+                
+
+            }
+
+
+            function vider_addquakes()
+            {
+                    moon_quakes.src="design/off.png";
+                    quakes.forEach(function (quake) {
+                    scene.remove(quake);
+                    });
+                    quakes = [];
+            }
+
+            
+
+
+
+
+
+                });
+            });
+        });
+    });
+});
+    
+    </script>
+    </body>
+</html>
